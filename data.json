@@ -1,0 +1,19 @@
+{
+  "main_text": {
+    "str": "",
+    "size": 24
+  },
+  "aux_text": {
+    "str": "",
+    "size": 16
+  },
+  "format": { "type": "Facebook" },
+  "img": {
+    "tint": "#cb0072",
+    "data": ""
+  },
+  "overlay": {
+    "type": "presets",
+    "index": 0
+  }
+}
