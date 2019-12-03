@@ -1,11 +1,15 @@
 @import "reset.scss";
 @import "init.scss";
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i,700&display=swap");
 
 body {
   background: #555;
+  font-family: "IBM Plex Mono", monospace;
+  @include fs(0);
 }
 
 $w-toolbar: $u-h * 2;
+$pad-tb: $u-h/4;
 
 #toolbar {
   position: fixed;
@@ -14,6 +18,35 @@ $w-toolbar: $u-h * 2;
   top: 0;
   bottom: 0;
   width: $w-toolbar;
+  color: white;
+  @include fs(-1);
+  padding: $pad-tb;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#toolbar div {
+  & + div {
+    margin-top: $pad-tb;
+  }
+  label {
+    display: block;
+    width: calc(#{$w-toolbar} - #{2 * $pad-tb});
+    height: calc(#{$w-toolbar} - #{2 * $pad-tb});
+    background: red;
+    border-radius: $u-h/8;
+    border: none;
+    cursor: pointer;
+  }
+  input[type="checkbox"] {
+    display: none;
+    &:checked {
+      & ~ label {
+        background: blue;
+      }
+    }
+  }
 }
 
 #p5js-container {
