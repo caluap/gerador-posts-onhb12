@@ -9,7 +9,7 @@ body {
 }
 
 $w-toolbar: $u-h * 2;
-$w-panel: $u-h * 8;
+$w-panel: $u-h * 10;
 $pad-tb: $u-h/4;
 
 .big-but {
@@ -73,7 +73,7 @@ $pad-tb: $u-h/4;
         background: orangered;
       }
       & ~ .panel {
-        display: block;
+        display: grid;
       }
     }
   }
@@ -149,8 +149,10 @@ $pad-tb: $u-h/4;
   }
 }
 
-.panel input[type="radio"] + label + input[type="radio"] + label {
-  margin-top: $u-h/4;
+.panel {
+  grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
+  grid-gap: $u-h / 2;
 }
 
 #toolbar .meta button {
