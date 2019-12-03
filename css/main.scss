@@ -71,9 +71,9 @@ $pad-tb: $u-h/4;
     &:checked {
       & ~ label {
         background: coral;
-        .panel {
-          display: block;
-        }
+      }
+      & ~ .panel {
+        display: block;
       }
     }
   }
@@ -86,9 +86,32 @@ $pad-tb: $u-h/4;
   top: 0;
   bottom: 0;
   z-index: 10;
-  background: coral;
+
+  background: wheat;
+  color: #333;
+  text-align: left;
+  padding: $pad-tb * 2;
+
   width: $w-panel;
   @include sombra-3;
+
+  padding-right: $u-h * 3/2;
+  h2 {
+    position: absolute;
+    width: $u-h;
+    height: 100vh;
+    right: 0;
+    top: 0;
+
+    padding: $u-h/2 $u-h/6;
+
+    background: orangered;
+    color: white;
+    @include faux-caps;
+    font-weight: bold;
+
+    writing-mode: vertical-lr;
+  }
 }
 
 #toolbar .meta button {
