@@ -8,13 +8,13 @@ $s-xl: 1280px;
 $font-size-ratio: 1.25;
 $base-font-size: 20px;
 
-$cor-sem-urgencia: #007AB7;
-$cor-pouco-urgente: #F6A623;
-$cor-urgente: #D0011B;
+$cor-sem-urgencia: #007ab7;
+$cor-pouco-urgente: #f6a623;
+$cor-urgente: #d0011b;
 
 $amarelo-preface: #ffdb3e;
 
-$fonte-texto: 'Georgia';
+$fonte-texto: "Georgia";
 
 // @ https://css-tricks.com/snippets/sass/power-function/
 @function pow($number, $exponent) {
@@ -39,101 +39,121 @@ $fonte-texto: 'Georgia';
   }
 }
 
-@function cinza($nivel : 5) {
-	@return mix(#FEF9F0,#0d0c0b,$nivel*10);
+@function cinza($nivel: 5) {
+  @return mix(#fef9f0, #0d0c0b, $nivel * 10);
 }
 
-@mixin fs($s : 1, $linha : 1.5) {
-	font-size: $base-font-size * pow($font-size-ratio, $s);
-	line-height: $base-font-size * pow($font-size-ratio, $s) * $linha;
+@mixin fs($s: 1, $linha: 1.5) {
+  font-size: $base-font-size * pow($font-size-ratio, $s);
+  line-height: $base-font-size * pow($font-size-ratio, $s) * $linha;
 }
-
 
 @mixin media-query($device: $s-md) {
-		@media screen and (max-width: $device) {
-				@content;
-		}
+  @media screen and (max-width: $device) {
+    @content;
+  }
 }
 
 @mixin media-query-a-partir($device: $s-md) {
-	@media screen and (min-width: $device) {
-			@content;
-	}
+  @media screen and (min-width: $device) {
+    @content;
+  }
 }
 
 @mixin borda-sombra {
-	box-shadow: inset 0 0 1px rgba(0,0,0,0.5);
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5);
 }
 
-@mixin canto-a-canto($p:0, $pos:absolute) {
-	position: $pos;
-	bottom: $p;
-	left: $p;
-	right: $p;
-	top: $p;
+@mixin canto-a-canto($p: 0, $pos: absolute) {
+  position: $pos;
+  bottom: $p;
+  left: $p;
+  right: $p;
+  top: $p;
 }
 
-@mixin texto-sombra-0 { text-shadow: 0	0px	1px rgba(0,0,0,0.50), 0	2px	8px rgba(0,0,0,0.1), 0	0.5px	0.5px rgba(0,0,0,0.6); }
-@mixin texto-sombra-1 { text-shadow: 0	1px	3px rgba(0,0,0,0.12), 0	1px	2px rgba(0,0,0,0.24); }
+@mixin texto-sombra-0 {
+  text-shadow: 0 0px 1px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.1),
+    0 0.5px 0.5px rgba(0, 0, 0, 0.6);
+}
+@mixin texto-sombra-1 {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
 
-@mixin sombra-0($c:black) { box-shadow: 0	0px	1px transparentize($c,1-0.1), 0	0.5px	0.5px transparentize($c,1-0.24); }
-@mixin sombra-1($c:black) { box-shadow: 0	1px	3px transparentize($c,1-0.12), 0	1px	2px transparentize($c,1-0.24); }
-@mixin sombra-2($c:black) { box-shadow: 0	3px	6px transparentize($c,1-0.16), 0	3px	6px transparentize($c,1-0.23); }
-@mixin sombra-3($c:black) { box-shadow: 0 10px 20px transparentize($c,1-0.19), 0	6px	6px transparentize($c,1-0.23); }
-@mixin sombra-4($c:black) { box-shadow: 0 14px 28px transparentize($c,1-0.25), 0 10px 10px transparentize($c,1-0.22); }
-@mixin sombra-5($c:black) { box-shadow: 0 19px 38px transparentize($c,1-0.30), 0 15px 12px transparentize($c,1-0.22); }
+@mixin sombra-0($c: black) {
+  box-shadow: 0 0px 1px transparentize($c, 1-0.1),
+    0 0.5px 0.5px transparentize($c, 1-0.24);
+}
+@mixin sombra-1($c: black) {
+  box-shadow: 0 1px 3px transparentize($c, 1-0.12),
+    0 1px 2px transparentize($c, 1-0.24);
+}
+@mixin sombra-2($c: black) {
+  box-shadow: 0 3px 6px transparentize($c, 1-0.16),
+    0 3px 6px transparentize($c, 1-0.23);
+}
+@mixin sombra-3($c: black) {
+  box-shadow: 0 10px 20px transparentize($c, 1-0.19),
+    0 6px 6px transparentize($c, 1-0.23);
+}
+@mixin sombra-4($c: black) {
+  box-shadow: 0 14px 28px transparentize($c, 1-0.25),
+    0 10px 10px transparentize($c, 1-0.22);
+}
+@mixin sombra-5($c: black) {
+  box-shadow: 0 19px 38px transparentize($c, 1-0.3),
+    0 15px 12px transparentize($c, 1-0.22);
+}
 
 @mixin faux-caps {
-	text-transform: uppercase;
-	letter-spacing: 0.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 @mixin anula-faux-caps {
-	text-transform: none;
-	letter-spacing: normal;
+  text-transform: none;
+  letter-spacing: normal;
 }
 
 @mixin hrs-que-separam {
-	@for $i from 1 through 12 {
-			.separador-#{$i} {
-				width: 100%;
-				border: none;
-				clear: both;
-				height: $u-h * $i;
-			}
-			.separador-negativo-#{$i} {
-				width: 100%;
-				height: 0;
-				border: none;
-				clear: both;
-				margin-top: -$u-h * $i;
-			}
-	}
+  @for $i from 1 through 12 {
+    .separador-#{$i} {
+      width: 100%;
+      border: none;
+      clear: both;
+      height: $u-h * $i;
+    }
+    .separador-negativo-#{$i} {
+      width: 100%;
+      height: 0;
+      border: none;
+      clear: both;
+      margin-top: -$u-h * $i;
+    }
+  }
 }
 
 @include hrs-que-separam;
 
-
 .visualizador {
-	border: 1px solid red !important;
-	box-sizing: border-box;
+  border: 1px solid red !important;
+  box-sizing: border-box;
 }
 
 .pad {
-	box-sizing: border-box;
-	padding-left: $u-h;
-	padding-right: $u-h;
+  box-sizing: border-box;
+  padding-left: $u-h;
+  padding-right: $u-h;
 }
 
 .pad-1-2 {
-	box-sizing: border-box;
-	padding-left: $u-h / 2;
-	padding-right: $u-h / 2;
-
+  box-sizing: border-box;
+  padding-left: $u-h / 2;
+  padding-right: $u-h / 2;
 }
 
 .minus-pad {
   @include media-query-a-partir {
-    width: calc(100% + #{$u-h*2});
+    width: calc(100% + #{$u-h * 2});
     position: relative;
     left: -$u-h;
   }
@@ -152,26 +172,45 @@ $fonte-texto: 'Georgia';
   }
 }
 
-@mixin pad-v($d : 1, $top : 1, $bottom: 1) {
-	box-sizing: border-box;
-	padding-top: $u-h * $d * $top;
-	padding-bottom: $u-h * $d * $bottom;
+@mixin pad-v($d: 1, $top: 1, $bottom: 1) {
+  box-sizing: border-box;
+  padding-top: $u-h * $d * $top;
+  padding-bottom: $u-h * $d * $bottom;
 }
 
-html, button, input, select, textarea,
-.pure-g [class *= "pure-u"] {
-		font-family: $fonte-texto, sans-serif;
-		@include fs(0);
+html,
+button,
+input,
+select,
+textarea,
+.pure-g [class*="pure-u"] {
+  font-family: $fonte-texto, sans-serif;
+  @include fs(0);
 }
 
 body {
-	font-family: $fonte-texto, sans-serif;
+  font-family: $fonte-texto, sans-serif;
 }
 
 p + p {
-	margin-top: $u-h/2;
+  margin-top: $u-h/2;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $fonte-texto, sans-serif;
+}
+
+.unselectable {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+																supported by Chrome, Opera and Firefox */
 }

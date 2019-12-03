@@ -20,7 +20,12 @@ $pad-tb: $u-h/4;
   background: white;
   border-radius: $u-h/8;
   border: none;
+
+  text-align: center;
+
   cursor: pointer;
+  @extend .unselectable;
+
   padding: $pad-tb;
   img {
     max-height: $s - 2 * $pad-tb;
