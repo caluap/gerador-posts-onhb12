@@ -22,24 +22,17 @@
             </h2>
             <input
               type="radio"
-              id="rd_facebook"
-              name="social-network"
-              value="facebook"
-            /><label for="rd_facebook"
-              ><img src="imgs/facebook-brands.svg" /><span>Feed</span></label
-            >
-            <input
-              type="radio"
               id="rd_instagram_feed"
-              name="social-network"
+              name="social-network-format"
               value="instagram_feed"
+              checked
             /><label for="rd_instagram_feed"
               ><img src="imgs/instagram-brands.svg" /><span>Feed</span></label
             >
             <input
               type="radio"
               id="rd_instagram_stories"
-              name="social-network"
+              name="social-network-format"
               value="instagram_stories"
             /><label for="rd_instagram_stories"
               ><img src="imgs/instagram-brands.svg" /><span
@@ -49,10 +42,18 @@
             <input
               type="radio"
               id="rd_twitter"
-              name="social-network"
+              name="social-network-format"
               value="twitter_feed"
             /><label for="rd_twitter"
               ><img src="imgs/twitter-brands.svg" /><span>Feed</span></label
+            >
+            <input
+              type="radio"
+              id="rd_facebook"
+              name="social-network-format"
+              value="facebook_feed"
+            /><label for="rd_facebook"
+              ><img src="imgs/facebook-brands.svg" /><span>Feed</span></label
             >
           </div>
         </div>
@@ -109,6 +110,18 @@
           if (unselect) {
             e.checked = true;
           }
+        });
+      });
+
+      let formatEls = document.querySelectorAll(
+        'input[name="social-network-format"'
+      );
+      formatEls.forEach(e => {
+        e.addEventListener("change", function() {
+          let newFormat = document.querySelector(
+            'input[name="social-network-format"]:checked'
+          ).value;
+          setSizeFormat(newFormat);
         });
       });
     </script>
