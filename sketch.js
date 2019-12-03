@@ -1,7 +1,10 @@
+let canv;
 function setup() {
-  // put setup code here
+  canv = createCanvas(1080, 1080);
+  canv.parent("p5js-container");
+  noLoop();
 }
 
 function draw() {
-  // put drawing code here
+  background(255);
 }

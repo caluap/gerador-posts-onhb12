@@ -2,5 +2,31 @@
 @import "init.scss";
 
 body {
-  background: red;
+  background: #555;
+}
+
+$w-toolbar: $u-h * 2;
+
+#toolbar {
+  position: fixed;
+  background: black;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: $w-toolbar;
+}
+
+#p5js-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-left: $w-toolbar;
+  width: calc(100% -#{$w-toolbar});
+  min-height: 100vh;
+  padding: $u-h * 2/3;
+  canvas {
+    box-shadow: 0 0 2px black;
+    transform-origin: top right;
+    transform: scale(0.7);
+  }
 }
