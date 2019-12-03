@@ -12,26 +12,26 @@
     <div id="toolbar">
       <div class="design">
         <div class="tb-area">
-          <input id="chk-format" type="checkbox" />
+          <input id="chk-format" class="chk-but" type="checkbox" />
           <label for="chk-format">
             <img src="imgs/ruler-triangle-solid.svg" />
             <div class="panel"></div>
           </label>
         </div>
         <div class="tb-area">
-          <input id="chk-text" type="checkbox" />
+          <input id="chk-text" class="chk-but" type="checkbox" />
           <label for="chk-text">
             <img src="imgs/text-solid.svg" />
           </label>
         </div>
         <div class="tb-area">
-          <input id="chk-image" type="checkbox" />
+          <input id="chk-image" class="chk-but" type="checkbox" />
           <label for="chk-image">
             <img src="imgs/image-solid.svg" />
           </label>
         </div>
         <div class="tb-area">
-          <input id="chk-overlay" type="checkbox" />
+          <input id="chk-overlay" class="chk-but" type="checkbox" />
           <label for="chk-overlay">
             <img src="imgs/sparkles-solid.svg" />
           </label>
@@ -50,5 +50,18 @@
       </div>
     </div>
     <article id="p5js-container"></article>
+
+    <script type="text/javascript">
+      let els = document.querySelectorAll(".chk-but");
+      els.forEach(e => {
+        e.addEventListener("change", function() {
+          //   // document.querySelector('#UserName').value = this.value;
+          els.forEach(e => {
+            e.checked = false;
+          });
+          e.checked = true;
+        });
+      });
+    </script>
   </body>
 </html>
