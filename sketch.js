@@ -1,4 +1,16 @@
 let canv;
+let mainFont, auxFont;
+
+let margin = 40;
+
+let mainText = "",
+  auxText = "";
+
+function preload() {
+  mainFont = loadFont("./fonts/CooperHewitt-SemiBold.otf");
+  auxFont = loadFont("./fonts/CooperHewitt-Book.otf");
+}
+
 function setup() {
   canv = createCanvas(1080, 1080);
   canv.parent("p5js-container");
@@ -6,7 +18,11 @@ function setup() {
 }
 
 function draw() {
-  background(255);
+  background(0);
+  // drawImage();
+  // drawOverlay();
+  // drawLogo();
+  drawText();
 }
 
 function setSizeFormat(format) {
@@ -22,4 +38,23 @@ function setSizeFormat(format) {
     format = "instagram_feed";
   }
   resizeCanvas(sizeConfig[format].w, sizeConfig[format].h);
+}
+
+function drawText() {
+  textFont(mainFont);
+  textAlign(LEFT, TOP);
+  fill(255);
+
+  let w = width / 2 - margin;
+  let h = height / 2 - margin;
+
+  textSize(60);
+  textLeading(80);
+  text(mainText, margin, margin, w);
+
+  textFont(auxFont);
+  textSize(40);
+  textLeading(60);
+  textAlign(LEFT, BOTTOM);
+  text(auxText, margin, height / 2, w, h);
 }

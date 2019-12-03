@@ -66,15 +66,15 @@
             <h2>Caixas de texto</h2>
             <div>
               <h3>Texto principal</h3>
-              <textarea class="textarea-g"></textarea>
+              <textarea id="main-text" class="textarea-g"></textarea>
             </div>
 
             <div>
               <h3>Texto secundário</h3>
-              <textarea class="textarea-p"></textarea>
+              <textarea id="aux-text" class="textarea-p"></textarea>
             </div>
 
-            <button>Atualizar</button>
+            <button onclick="updateTextVars()">Atualizar</button>
           </div>
         </div>
         <div class="tb-area">
@@ -135,6 +135,13 @@
           setSizeFormat(newFormat);
         });
       });
+
+      function updateTextVars() {
+        mainText = document.getElementById("main-text").value;
+        auxText = document.getElementById("aux-text").value;
+
+        redraw();
+      }
     </script>
   </body>
 </html>
