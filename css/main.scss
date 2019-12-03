@@ -3,12 +3,13 @@
 @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i,700&display=swap");
 
 body {
-  background: #555;
+  background: #777;
   font-family: "IBM Plex Mono", monospace;
   @include fs(0);
 }
 
 $w-toolbar: $u-h * 2;
+$w-panel: $u-h * 8;
 $pad-tb: $u-h/4;
 
 .big-but {
@@ -25,11 +26,15 @@ $pad-tb: $u-h/4;
     max-height: $s - 2 * $pad-tb;
     max-width: $s - 2 * $pad-tb;
   }
+  &:hover {
+    background: coral;
+  }
 }
 
 #toolbar {
   position: fixed;
-  background: black;
+  z-index: 1;
+
   left: 0;
   top: 0;
   bottom: 0;
@@ -37,6 +42,9 @@ $pad-tb: $u-h/4;
   color: white;
   @include fs(-1);
   padding: $pad-tb;
+
+  background: #333;
+  @include sombra-3;
 
   display: flex;
   flex-direction: column;
@@ -57,10 +65,25 @@ $pad-tb: $u-h/4;
     display: none;
     &:checked {
       & ~ label {
-        background: yellow;
+        background: coral;
+        .panel {
+          display: block;
+        }
       }
     }
   }
+}
+
+.panel {
+  display: none;
+  position: fixed;
+  left: $w-toolbar;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+  background: coral;
+  width: $w-panel;
+  @include sombra-3;
 }
 
 #toolbar .meta button {
@@ -79,7 +102,7 @@ $pad-tb: $u-h/4;
   min-height: 100vh;
   padding: $u-h * 2/3;
   canvas {
-    box-shadow: 0 0 2px black;
+    @include sombra-2;
     transform-origin: top right;
     transform: scale(0.7);
   }
