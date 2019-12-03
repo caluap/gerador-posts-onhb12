@@ -70,7 +70,7 @@ $pad-tb: $u-h/4;
     display: none;
     &:checked {
       & ~ label {
-        background: coral;
+        background: orangered;
       }
       & ~ .panel {
         display: block;
