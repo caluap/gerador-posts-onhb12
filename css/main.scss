@@ -11,6 +11,22 @@ body {
 $w-toolbar: $u-h * 2;
 $pad-tb: $u-h/4;
 
+.big-but {
+  display: block;
+  $s: $w-toolbar - 2 * $pad-tb;
+  width: $s;
+  height: $s;
+  background: white;
+  border-radius: $u-h/8;
+  border: none;
+  cursor: pointer;
+  padding: $pad-tb;
+  img {
+    max-height: $s - 2 * $pad-tb;
+    max-width: $s - 2 * $pad-tb;
+  }
+}
+
 #toolbar {
   position: fixed;
   background: black;
@@ -24,28 +40,33 @@ $pad-tb: $u-h/4;
 
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
-#toolbar div {
-  & + div {
+#toolbar .design {
+  display: flex;
+  flex-direction: column;
+
+  .tb-area + .tb-area {
     margin-top: $pad-tb;
   }
   label {
-    display: block;
-    width: calc(#{$w-toolbar} - #{2 * $pad-tb});
-    height: calc(#{$w-toolbar} - #{2 * $pad-tb});
-    background: red;
-    border-radius: $u-h/8;
-    border: none;
-    cursor: pointer;
+    @extend .big-but;
   }
   input[type="checkbox"] {
     display: none;
     &:checked {
       & ~ label {
-        background: blue;
+        background: yellow;
       }
     }
+  }
+}
+
+#toolbar .meta button {
+  @extend .big-but;
+  & + button {
+    margin-top: $pad-tb;
   }
 }
 

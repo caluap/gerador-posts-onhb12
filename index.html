@@ -10,25 +10,42 @@
   </head>
   <body>
     <div id="toolbar">
-      <div class="tb-area">
-        <input id="chk-format" type="checkbox" />
-        <label for="chk-format"> </label>
+      <div class="design">
+        <div class="tb-area">
+          <input id="chk-format" type="checkbox" />
+          <label for="chk-format">
+            <img src="imgs/ruler-triangle-solid.svg" />
+          </label>
+        </div>
+        <div class="tb-area">
+          <input id="chk-text" type="checkbox" />
+          <label for="chk-text">
+            <img src="imgs/text-solid.svg" />
+          </label>
+        </div>
+        <div class="tb-area">
+          <input id="chk-image" type="checkbox" />
+          <label for="chk-image">
+            <img src="imgs/image-solid.svg" />
+          </label>
+        </div>
+        <div class="tb-area">
+          <input id="chk-overlay" type="checkbox" />
+          <label for="chk-overlay">
+            <img src="imgs/sparkles-solid.svg" />
+          </label>
+        </div>
       </div>
-      <div class="tb-area">
-        <input id="chk-text" type="checkbox" />
-        <label for="chk-text"> </label>
-      </div>
-      <div class="tb-area">
-        <input id="chk-image" type="checkbox" />
-        <label for="chk-image"> </label>
-      </div>
-      <div class="ttb-area">
-        <input id="chk-overlay" type="checkbox" />
-        <label for="chk-overlay"> </label>
-      </div>
-      <div class="tb-area">
-        <input id="chk-meta-operations" type="checkbox" />
-        <label for="chk-meta-operations"> </label>
+      <div class="meta">
+        <button id="mt-download">
+          <img src="imgs/file-download-solid.svg" />
+        </button>
+        <button id="mt-export">
+          <img src="imgs/file-export-solid.svg" />
+        </button>
+        <button id="mt-import">
+          <img src="imgs/file-import-solid.svg" />
+        </button>
       </div>
     </div>
     <article id="p5js-container"></article>
