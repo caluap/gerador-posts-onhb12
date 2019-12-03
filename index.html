@@ -55,11 +55,13 @@
       let els = document.querySelectorAll(".chk-but");
       els.forEach(e => {
         e.addEventListener("change", function() {
-          //   // document.querySelector('#UserName').value = this.value;
+          let unselect = e.checked;
           els.forEach(e => {
             e.checked = false;
           });
-          e.checked = true;
+          if (unselect) {
+            e.checked = true;
+          }
         });
       });
     </script>
