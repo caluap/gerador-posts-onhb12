@@ -78,7 +78,7 @@ function setup() {
   container = select("#slider-fs-main-text");
   container.child(sliderFsMainText);
 
-  sliderFsAuxText = createSlider(10, 60, 40, 2);
+  sliderFsAuxText = createSlider(20, 60, 40, 2);
   sliderFsAuxText.changed(updateCanvas);
   container = select("#slider-fs-aux-text");
   container.child(sliderFsAuxText);

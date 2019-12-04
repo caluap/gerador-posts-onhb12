@@ -6,6 +6,8 @@ body {
   background: #777;
   font-family: "IBM Plex Mono", monospace;
   @include fs(0);
+
+  overflow-y: hidden;
 }
 
 $w-toolbar: $u-h * 2;
@@ -141,6 +143,7 @@ $pad-tb: $u-h/4;
   background: lightslategrey;
   color: white;
   @include fs(0);
+  cursor: pointer;
   &:hover {
     background-color: slateblue;
   }
@@ -154,6 +157,9 @@ $pad-tb: $u-h/4;
 .panel input[type="range"] {
   width: 100%;
   @include fs(-2);
+}
+.panel input[type="range"] {
+  cursor: grab;
 }
 
 textarea {
