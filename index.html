@@ -132,13 +132,14 @@
           let newFormat = document.querySelector(
             'input[name="social-network-format"]:checked'
           ).value;
-          setSizeFormat(newFormat);
+          data.format = newFormat;
+          setSizeFormat();
         });
       });
 
       function updateTextVars() {
-        mainText = document.getElementById("main-text").value;
-        auxText = document.getElementById("aux-text").value;
+        data.text.mainText = document.getElementById("main-text").value;
+        data.text.auxText = document.getElementById("aux-text").value;
 
         redraw();
       }

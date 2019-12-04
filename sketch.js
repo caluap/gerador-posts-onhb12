@@ -3,8 +3,10 @@ let mainFont, auxFont;
 
 let margin = 40;
 
-let mainText = "",
-  auxText = "";
+let data = {
+  format: "instagram_feed",
+  text: { mainText: "", auxText: "" }
+};
 
 function preload() {
   mainFont = loadFont("./fonts/CooperHewitt-SemiBold.otf");
@@ -25,19 +27,14 @@ function draw() {
   drawText();
 }
 
-function setSizeFormat(format) {
+function setSizeFormat() {
   let sizeConfig = {
     facebook_feed: { w: 1200, h: 630 },
     twitter_feed: { w: 1024, h: 512 },
     instagram_feed: { w: 1080, h: 1080 },
     instagram_stories: { w: 1080, h: 1920 }
   };
-
-  if (!(format in sizeConfig)) {
-    // a nice default?
-    format = "instagram_feed";
-  }
-  resizeCanvas(sizeConfig[format].w, sizeConfig[format].h);
+  resizeCanvas(sizeConfig[data.format].w, sizeConfig[data.format].h);
 }
 
 function drawText() {
@@ -50,11 +47,10 @@ function drawText() {
 
   textSize(60);
   textLeading(80);
-  text(mainText, margin, margin, w);
+  text(data.text.mainText, margin, margin, w, h);
 
   textFont(auxFont);
   textSize(40);
   textLeading(60);
-  textAlign(LEFT, BOTTOM);
-  text(auxText, margin, height / 2, w, h);
+  text(data.text.auxText, margin, height / 2, w, h);
 }
