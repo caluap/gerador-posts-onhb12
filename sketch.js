@@ -35,7 +35,7 @@ let data = {
 };
 
 function preload() {
-  mainFont = loadFont("./fonts/CooperHewitt-SemiBold.otf");
+  mainFont = loadFont("./fonts/CooperHewitt-Semibold.otf");
   auxFont = loadFont("./fonts/CooperHewitt-Book.otf");
   logo = loadImage("./imgs/logo.png");
 }
