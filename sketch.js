@@ -68,6 +68,7 @@ function setup() {
   container.child(sliderFsAuxText);
 
   updateTextVars();
+  updateZoom();
 }
 
 function draw() {
@@ -177,4 +178,15 @@ function saveImg() {
   let clock = now.getHours() + "·" + now.getMinutes();
   let day = now.toJSON().slice(0, 10);
   saveCanvas(canvas, "post-" + day + "-" + clock, "jpg");
+}
+
+function updateZoom() {
+  let padding = ((36 * 2) / 3) * 2;
+  let availableSpace = window.innerHeight - padding;
+  let ratio = availableSpace / sizeConfig[data.format].h;
+  if (ratio < 1) {
+    canvas.elt.style.transform = `scale(${ratio})`;
+  } else {
+    canvas.elt.style.transform = `scale(1)`;
+  }
 }

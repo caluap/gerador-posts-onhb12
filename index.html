@@ -8,7 +8,7 @@
     <script src="sketch.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css" />
   </head>
-  <body>
+  <body onresize="updateZoom()">
     <div id="toolbar">
       <div class="design">
         <div class="tb-area">
@@ -227,6 +227,7 @@
           'input[name="social-network-format"]:checked'
         ).value;
         data.format = newFormat;
+        updateZoom();
         setSizeFormat();
       }
 
