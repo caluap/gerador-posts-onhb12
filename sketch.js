@@ -6,6 +6,8 @@ let img = null;
 
 let margin = 40;
 
+let logo;
+
 let data = {
   format: "instagram_feed",
   text: { mainText: "", auxText: "" },
@@ -15,6 +17,7 @@ let data = {
 function preload() {
   mainFont = loadFont("./fonts/CooperHewitt-SemiBold.otf");
   auxFont = loadFont("./fonts/CooperHewitt-Book.otf");
+  logo = loadImage("./imgs/logo.png");
 }
 
 function setup() {
@@ -69,7 +72,7 @@ function drawImage() {
     tint("#cb0072");
 
     let ratio;
-    if (width > height) {
+    if (width >= height) {
       ratio = width / img.width;
     } else {
       ratio = height / img.height;
@@ -85,7 +88,12 @@ function drawImage() {
   }
 }
 function drawOverlay() {}
-function drawLogo() {}
+function drawLogo() {
+  let s = Math.max(width * 0.1, 90);
+  let x = width - margin - s;
+  let y = height - margin - s;
+  image(logo, x, y, s, s);
+}
 
 function handleUpload(file) {
   if (file.type === "image") {
