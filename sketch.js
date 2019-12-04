@@ -11,7 +11,7 @@ let sizeConfig = {
   instagram_stories: { w: 1080, h: 1920 }
 };
 
-let sliderYMainText, sliderFsMainText, sliderYAuxText, sliderFsAuxTex;
+let sliderYMainText, sliderFsMainText, sliderYAuxText, sliderFsAuxText;
 
 let margin = 40;
 
@@ -39,21 +39,30 @@ function setup() {
   let container = select("#img-upload");
   container.child(imgInput);
 
-  sliderYMainText = createSlider(0, sizeConfig[data.format].h, margin, 1);
+  sliderYMainText = createSlider(margin, sizeConfig[data.format].h, margin, 1);
+  sliderYMainText.changed(redraw);
   container = select("#slider-y-main-text");
   container.child(sliderYMainText);
 
-  sliderYAuxText = createSlider(0, sizeConfig[data.format].h, margin, 1);
+  sliderYAuxText = createSlider(
+    margin,
+    sizeConfig[data.format].h,
+    sizeConfig[data.format].h / 2,
+    1
+  );
+  sliderYAuxText.changed(redraw);
   container = select("#slider-y-aux-text");
   container.child(sliderYAuxText);
 
   sliderFsMainText = createSlider(20, 100, 60, 2);
+  sliderFsMainText.changed(redraw);
   container = select("#slider-fs-main-text");
   container.child(sliderFsMainText);
 
-  sliderFsAuxTex = createSlider(10, 60, 40, 2);
+  sliderFsAuxText = createSlider(10, 60, 40, 2);
+  sliderFsAuxText.changed(redraw);
   container = select("#slider-fs-aux-text");
-  container.child(sliderFsAuxTex);
+  container.child(sliderFsAuxText);
 }
 
 function draw() {
@@ -75,17 +84,20 @@ function drawText() {
   textAlign(LEFT, TOP);
   fill(255);
 
-  let w = width / 2 - margin;
-  let h = height / 2 - margin;
+  let w = (width * 2) / 3 - margin;
+  let yMainText = sliderYMainText.value();
+  let fsMainText = sliderFsMainText.value();
 
-  textSize(60);
-  textLeading(80);
-  text(data.text.mainText, margin, margin, w, h);
+  textSize(fsMainText);
+  textLeading((fsMainText * 4) / 3);
+  text(data.text.mainText, margin, yMainText, w, height - yMainText);
 
+  let yAuxText = sliderYAuxText.value();
+  let fsAuxText = sliderFsAuxText.value();
   textFont(auxFont);
-  textSize(40);
-  textLeading(60);
-  text(data.text.auxText, margin, height / 2, w, h);
+  textSize(fsAuxText);
+  textLeading((fsAuxText * 4) / 3);
+  text(data.text.auxText, margin, yAuxText, w, height - yAuxText);
 }
 
 function drawImage() {
