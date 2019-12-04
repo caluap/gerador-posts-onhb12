@@ -1,4 +1,4 @@
-let canv;
+let canvas;
 let mainFont, auxFont;
 
 let imgInput;
@@ -21,8 +21,8 @@ function preload() {
 }
 
 function setup() {
-  canv = createCanvas(1080, 1080);
-  canv.parent("p5js-container");
+  canvas = createCanvas(1080, 1080);
+  canvas.parent("p5js-container");
   noLoop();
 
   imgInput = createFileInput(handleUpload);
@@ -102,4 +102,11 @@ function handleUpload(file) {
       redraw();
     });
   }
+}
+
+function saveImg() {
+  let now = new Date();
+  let clock = now.getHours() + "·" + now.getMinutes();
+  let day = now.toJSON().slice(0, 10);
+  saveCanvas(canvas, "post-" + day + "-" + clock, "jpg");
 }
