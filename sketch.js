@@ -11,6 +11,8 @@ let sizeConfig = {
   instagram_stories: { w: 1080, h: 1920 }
 };
 
+let loadedPatterns = {};
+
 let sliderYMainText, sliderFsMainText, sliderYAuxText, sliderFsAuxText;
 
 let margin = 40;
@@ -20,6 +22,7 @@ let logo;
 let data = {
   format: "instagram_feed",
   text: { mainText: "", auxText: "" },
+  pattern: 0,
   img: null
 };
 
@@ -70,7 +73,7 @@ function setup() {
 function draw() {
   background(0);
   drawImage();
-  drawOverlay();
+  drawPattern();
   drawLogo();
   drawText();
 }
@@ -124,7 +127,28 @@ function drawImage() {
     noTint();
   }
 }
-function drawOverlay() {}
+function drawPattern() {
+  if (data.pattern != 0) {
+    if (!(data.format in loadedPatterns)) {
+      loadedPatterns[data.format] = {};
+    }
+    if (!(data.pattern in loadedPatterns[data.format])) {
+      let path = "./imgs/patterns/" + data.format + "/" + data.pattern + ".png";
+      loadedPatterns[data.format][data.pattern] = loadImage(path, function() {
+        console.log("has loaded the pattern");
+        redraw();
+      });
+    } else {
+      if (img) {
+        tint("#ff008f");
+      } else {
+        tint("#cb0072");
+      }
+      image(loadedPatterns[data.format][data.pattern], 0, 0, width, height);
+      noTint();
+    }
+  }
+}
 function drawLogo() {
   let s = Math.max(width * 0.1, 90);
   let x = width - margin - s;

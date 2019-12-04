@@ -113,13 +113,13 @@
           <label class="label-as-button" for="chk-overlay">
             <img src="imgs/sparkles-solid.svg" />
           </label>
-          <div class="panel" id="pattern-selection">
+          <div class="panel" id="c-pattern-selection">
             <h2>Tematização ONHB12</h2>
             <input
               type="radio"
               id="rd_pattern_00"
-              name="pattern_selection"
-              value="pattern_00"
+              name="pattern-selection"
+              value="0"
               checked
             /><label for="rd_pattern_00"
               ><img src="imgs/pattern-icons/ico00.svg" /><span
@@ -129,8 +129,8 @@
             <input
               type="radio"
               id="rd_pattern_01"
-              name="pattern_selection"
-              value="pattern_01"
+              name="pattern-selection"
+              value="1"
               checked
             /><label for="rd_pattern_01"
               ><img src="imgs/pattern-icons/ico01.svg" /><span
@@ -140,8 +140,8 @@
             <input
               type="radio"
               id="rd_pattern_02"
-              name="pattern_selection"
-              value="pattern_02"
+              name="pattern-selection"
+              value="2"
               checked
             /><label for="rd_pattern_02"
               ><img src="imgs/pattern-icons/ico02.svg" /><span
@@ -151,8 +151,8 @@
             <input
               type="radio"
               id="rd_pattern_03"
-              name="pattern_selection"
-              value="pattern_03"
+              name="pattern-selection"
+              value="3"
               checked
             /><label for="rd_pattern_03"
               ><img src="imgs/pattern-icons/ico03.svg" /><span
@@ -162,8 +162,8 @@
             <input
               type="radio"
               id="rd_pattern_04"
-              name="pattern_selection"
-              value="pattern_04"
+              name="pattern-selection"
+              value="4"
               checked
             /><label for="rd_pattern_04"
               ><img src="imgs/pattern-icons/ico04.svg" /><span>1/3</span></label
@@ -171,8 +171,8 @@
             <input
               type="radio"
               id="rd_pattern_05"
-              name="pattern_selection"
-              value="pattern_05"
+              name="pattern-selection"
+              value="5"
               checked
             /><label for="rd_pattern_05"
               ><img src="imgs/pattern-icons/ico05.svg" /><span>2/3</span></label
@@ -212,14 +212,31 @@
         'input[name="social-network-format"'
       );
       formatEls.forEach(e => {
-        e.addEventListener("change", function() {
-          let newFormat = document.querySelector(
-            'input[name="social-network-format"]:checked'
-          ).value;
-          data.format = newFormat;
-          setSizeFormat();
-        });
+        e.addEventListener("change", updateFormat);
       });
+
+      let patternEls = document.querySelectorAll(
+        'input[name="pattern-selection"]'
+      );
+      patternEls.forEach(e => {
+        e.addEventListener("change", updatePattern);
+      });
+
+      function updateFormat() {
+        let newFormat = document.querySelector(
+          'input[name="social-network-format"]:checked'
+        ).value;
+        data.format = newFormat;
+        setSizeFormat();
+      }
+
+      function updatePattern() {
+        let newPattern = document.querySelector(
+          'input[name="pattern-selection"]:checked'
+        ).value;
+        data.pattern = newPattern;
+        redraw();
+      }
 
       function updateTextVars() {
         data.text.mainText = document.getElementById("main-text").value;
