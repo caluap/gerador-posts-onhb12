@@ -3,6 +3,7 @@ let mainFont, auxFont;
 
 let imgInput;
 let img = null;
+let originalImg = null;
 
 let sizeConfig = {
   facebook_feed: { w: 1200, h: 630 },
@@ -13,7 +14,11 @@ let sizeConfig = {
 
 let loadedPatterns = {};
 
-let sliderYMainText, sliderFsMainText, sliderYAuxText, sliderFsAuxText;
+let sliderYMainText,
+  sliderFsMainText,
+  sliderYAuxText,
+  sliderFsAuxText,
+  sliderTint;
 
 let margin = 40;
 
@@ -23,7 +28,8 @@ let data = {
   format: "instagram_feed",
   text: { mainText: "", auxText: "" },
   pattern: 0,
-  img: null
+  img: null,
+  tint: 1
 };
 
 function preload() {
@@ -41,6 +47,14 @@ function setup() {
   imgInput.id("img-upload");
   let container = select("#img-upload");
   container.child(imgInput);
+
+  sliderTint = createSlider(0, 1, 1, 0.05);
+  sliderTint.changed(() => {
+    data.tint = sliderTint.value();
+    redraw();
+  });
+  container = select("#tint-percentage");
+  container.child(sliderTint);
 
   sliderYMainText = createSlider(margin, sizeConfig[data.format].h, margin, 1);
   sliderYMainText.changed(redraw);
@@ -108,8 +122,7 @@ function drawText() {
 
 function drawImage() {
   if (img) {
-    tint("#cb0072");
-
+    tint(203, 0, 114);
     let ratio;
     let rCanv = width / height;
     let rImg = img.width / img.height;
@@ -124,6 +137,10 @@ function drawImage() {
     let y = height / 2 - newH / 2;
 
     image(img, x, y, newW, newH);
+
+    let alpha = 255 * (1 - data.tint);
+    tint(255, alpha);
+    image(originalImg, x, y, newW, newH);
 
     noTint();
   }
@@ -160,6 +177,7 @@ function drawLogo() {
 function handleUpload(file) {
   if (file.type === "image") {
     img = loadImage(file.data, () => {
+      originalImg = img.get();
       img.filter(GRAY);
       redraw();
     });
@@ -169,6 +187,7 @@ function handleUpload(file) {
 function removeImage() {
   if (img) {
     img = null;
+    originalImg = null;
     redraw();
   }
 }

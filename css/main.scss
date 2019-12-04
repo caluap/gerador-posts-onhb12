@@ -66,7 +66,7 @@ $pad-tb: $u-h/4;
   label.label-as-button {
     @extend .big-but;
   }
-  input[type="checkbox"] {
+  input.chk-but {
     display: none;
     &:checked {
       & ~ label.label-as-button {
