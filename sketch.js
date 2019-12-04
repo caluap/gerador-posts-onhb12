@@ -5,6 +5,8 @@ let imgInput;
 let img = null;
 let originalImg = null;
 
+let spinner;
+
 let sizeConfig = {
   facebook_feed: { w: 1200, h: 630 },
   twitter_feed: { w: 1024, h: 512 },
@@ -51,13 +53,13 @@ function setup() {
   sliderTint = createSlider(0, 1, 1, 0.05);
   sliderTint.changed(() => {
     data.tint = sliderTint.value();
-    redraw();
+    updateCanvas();
   });
   container = select("#tint-percentage");
   container.child(sliderTint);
 
   sliderYMainText = createSlider(margin, sizeConfig[data.format].h, margin, 1);
-  sliderYMainText.changed(redraw);
+  sliderYMainText.changed(updateCanvas);
   container = select("#slider-y-main-text");
   container.child(sliderYMainText);
 
@@ -67,22 +69,29 @@ function setup() {
     sizeConfig[data.format].h / 2,
     1
   );
-  sliderYAuxText.changed(redraw);
+  sliderYAuxText.changed(updateCanvas);
   container = select("#slider-y-aux-text");
   container.child(sliderYAuxText);
 
   sliderFsMainText = createSlider(20, 100, 60, 2);
-  sliderFsMainText.changed(redraw);
+  sliderFsMainText.changed(updateCanvas);
   container = select("#slider-fs-main-text");
   container.child(sliderFsMainText);
 
   sliderFsAuxText = createSlider(10, 60, 40, 2);
-  sliderFsAuxText.changed(redraw);
+  sliderFsAuxText.changed(updateCanvas);
   container = select("#slider-fs-aux-text");
   container.child(sliderFsAuxText);
 
+  spinner = select("#spinner");
+
   updateTextVars();
   updateZoom();
+}
+
+function updateCanvas() {
+  spinner.elt.style.opacity = "1";
+  setTimeout(redraw, 10);
 }
 
 function draw() {
@@ -91,6 +100,7 @@ function draw() {
   drawPattern();
   drawLogo();
   drawText();
+  spinner.elt.style.opacity = "0";
 }
 
 function setSizeFormat() {
@@ -154,7 +164,7 @@ function drawPattern() {
       let path = "./imgs/patterns/" + data.format + "/" + data.pattern + ".png";
       loadedPatterns[data.format][data.pattern] = loadImage(path, function() {
         console.log("has loaded the pattern");
-        redraw();
+        updateCanvas();
       });
     } else {
       if (img) {
@@ -179,7 +189,7 @@ function handleUpload(file) {
     img = loadImage(file.data, () => {
       originalImg = img.get();
       img.filter(GRAY);
-      redraw();
+      updateCanvas();
     });
   }
 }
@@ -188,7 +198,7 @@ function removeImage() {
   if (img) {
     img = null;
     originalImg = null;
-    redraw();
+    updateCanvas();
   }
 }
 

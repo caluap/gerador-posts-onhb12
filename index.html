@@ -241,15 +241,23 @@
           'input[name="pattern-selection"]:checked'
         ).value;
         data.pattern = newPattern;
-        redraw();
+        updateCanvas();
       }
 
       function updateTextVars() {
         data.text.mainText = document.getElementById("main-text").value;
         data.text.auxText = document.getElementById("aux-text").value;
 
-        redraw();
+        updateCanvas();
       }
     </script>
+    <div id="spinner">
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+    </div>
   </body>
 </html>
