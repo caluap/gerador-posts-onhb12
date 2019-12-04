@@ -4,6 +4,15 @@ let mainFont, auxFont;
 let imgInput;
 let img = null;
 
+let sizeConfig = {
+  facebook_feed: { w: 1200, h: 630 },
+  twitter_feed: { w: 1024, h: 512 },
+  instagram_feed: { w: 1080, h: 1080 },
+  instagram_stories: { w: 1080, h: 1920 }
+};
+
+let sliderYMainText, sliderFsMainText, sliderYAuxText, sliderFsAuxTex;
+
 let margin = 40;
 
 let logo;
@@ -29,6 +38,22 @@ function setup() {
   imgInput.id("img-upload");
   let container = select("#img-upload");
   container.child(imgInput);
+
+  sliderYMainText = createSlider(0, sizeConfig[data.format].h, margin, 1);
+  container = select("#slider-y-main-text");
+  container.child(sliderYMainText);
+
+  sliderYAuxText = createSlider(0, sizeConfig[data.format].h, margin, 1);
+  container = select("#slider-y-aux-text");
+  container.child(sliderYAuxText);
+
+  sliderFsMainText = createSlider(20, 100, 60, 2);
+  container = select("#slider-fs-main-text");
+  container.child(sliderFsMainText);
+
+  sliderFsAuxTex = createSlider(10, 60, 40, 2);
+  container = select("#slider-fs-aux-text");
+  container.child(sliderFsAuxTex);
 }
 
 function draw() {
@@ -40,13 +65,9 @@ function draw() {
 }
 
 function setSizeFormat() {
-  let sizeConfig = {
-    facebook_feed: { w: 1200, h: 630 },
-    twitter_feed: { w: 1024, h: 512 },
-    instagram_feed: { w: 1080, h: 1080 },
-    instagram_stories: { w: 1080, h: 1920 }
-  };
   resizeCanvas(sizeConfig[data.format].w, sizeConfig[data.format].h);
+  sliderYMainText.elt.max = sizeConfig[data.format].h;
+  sliderYAuxText.elt.max = sizeConfig[data.format].h;
 }
 
 function drawText() {

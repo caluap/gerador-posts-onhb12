@@ -118,6 +118,11 @@ $pad-tb: $u-h/4;
   font-weight: bold;
 }
 
+.panel h4 {
+  @include fs(-2);
+  @include faux-caps;
+}
+
 .generic-text-field {
   width: 100%;
   padding: $u-h / 4;
@@ -144,8 +149,9 @@ $pad-tb: $u-h/4;
   @extend .generic-button;
 }
 
-.panel input[type="file"] {
-  width: 100;
+.panel input[type="file"],
+.panel input[type="range"] {
+  width: 100%;
   @include fs(-2);
 }
 
