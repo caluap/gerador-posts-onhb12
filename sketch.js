@@ -104,6 +104,13 @@ function handleUpload(file) {
   }
 }
 
+function removeImage() {
+  if (img) {
+    img = null;
+    redraw();
+  }
+}
+
 function saveImg() {
   let now = new Date();
   let clock = now.getHours() + "·" + now.getMinutes();
