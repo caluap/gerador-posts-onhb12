@@ -84,7 +84,8 @@ $pad-tb: $u-h/4;
   position: fixed;
   left: $w-toolbar;
   top: 0;
-  bottom: 0;
+  height: 100vh;
+  overflow-y: auto;
   z-index: 10;
 
   background: wheat;
