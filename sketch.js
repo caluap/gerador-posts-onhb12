@@ -72,7 +72,9 @@ function drawImage() {
     tint("#cb0072");
 
     let ratio;
-    if (width >= height) {
+    let rCanv = width / height;
+    let rImg = img.width / img.height;
+    if (rCanv >= rImg) {
       ratio = width / img.width;
     } else {
       ratio = height / img.height;
