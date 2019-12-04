@@ -63,6 +63,8 @@ function setup() {
   sliderFsAuxText.changed(redraw);
   container = select("#slider-fs-aux-text");
   container.child(sliderFsAuxText);
+
+  updateTextVars();
 }
 
 function draw() {
