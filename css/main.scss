@@ -144,6 +144,11 @@ $pad-tb: $u-h/4;
   @extend .generic-button;
 }
 
+.panel input[type="file"] {
+  width: 100;
+  @include fs(-2);
+}
+
 textarea {
   @extend .generic-text-field;
   &.textarea-g {

@@ -1,11 +1,15 @@
 let canv;
 let mainFont, auxFont;
 
+let imgInput;
+let img = null;
+
 let margin = 40;
 
 let data = {
   format: "instagram_feed",
-  text: { mainText: "", auxText: "" }
+  text: { mainText: "", auxText: "" },
+  img: null
 };
 
 function preload() {
@@ -17,13 +21,18 @@ function setup() {
   canv = createCanvas(1080, 1080);
   canv.parent("p5js-container");
   noLoop();
+
+  imgInput = createFileInput(handleUpload);
+  imgInput.id("img-upload");
+  let container = select("#img-upload");
+  container.child(imgInput);
 }
 
 function draw() {
   background(0);
-  // drawImage();
-  // drawOverlay();
-  // drawLogo();
+  drawImage();
+  drawOverlay();
+  drawLogo();
   drawText();
 }
 
@@ -53,4 +62,36 @@ function drawText() {
   textSize(40);
   textLeading(60);
   text(data.text.auxText, margin, height / 2, w, h);
+}
+
+function drawImage() {
+  if (img) {
+    tint("#cb0072");
+
+    let ratio;
+    if (width > height) {
+      ratio = width / img.width;
+    } else {
+      ratio = height / img.height;
+    }
+    let newW = img.width * ratio;
+    let newH = img.height * ratio;
+    let x = width / 2 - newW / 2;
+    let y = height / 2 - newH / 2;
+
+    image(img, x, y, newW, newH);
+
+    noTint();
+  }
+}
+function drawOverlay() {}
+function drawLogo() {}
+
+function handleUpload(file) {
+  if (file.type === "image") {
+    img = loadImage(file.data, () => {
+      img.filter(GRAY);
+      redraw();
+    });
+  }
 }
