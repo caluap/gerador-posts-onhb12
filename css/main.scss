@@ -75,7 +75,7 @@ $pad-tb: $u-h/4;
         background: orangered;
       }
       & ~ .panel {
-        display: grid;
+        display: block;
       }
     }
   }
@@ -87,18 +87,17 @@ $pad-tb: $u-h/4;
   left: $w-toolbar;
   top: 0;
   height: 100vh;
-  overflow-y: auto;
   z-index: 10;
 
   background: wheat;
   color: #333;
   text-align: left;
-  padding: $pad-tb * 2;
 
   width: $w-panel;
+  max-width: calc(100vw - #{$w-toolbar});
   @include sombra-3;
 
-  padding-right: $u-h * 3/2;
+  padding-right: $u-h;
   h2 {
     position: absolute;
     width: $u-h;
@@ -218,10 +217,27 @@ textarea {
   }
 }
 
-.panel {
+.panel .panel-container {
+  padding: $pad-tb * 2;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  height: 100vh;
+
+  display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
   grid-gap: $u-h / 2;
+
+  // i don't understand the need for this, but the
+  // bottom padding isn't working so...
+  :last-child:after {
+    visibility: hidden;
+    line-height: 0;
+    content: "hello hacky-world...";
+    display: block;
+  }
 }
 
 #toolbar .meta button {
