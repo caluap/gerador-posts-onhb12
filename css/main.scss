@@ -220,7 +220,7 @@ textarea {
 .panel .panel-container {
   padding: $pad-tb * 2;
 
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 
   height: 100vh;
