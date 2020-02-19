@@ -1,6 +1,6 @@
 let data = {
   format: "instagram_feed",
-  text: { mainText: "", name: "", origin: "" },
+  text: { testimony: "", deponent: "", deponentOrigin: "" },
   img: null
 };
 
