@@ -9,8 +9,6 @@ let sliderYMainText,
   sliderFsAuxText,
   sliderTint;
 
-let margin = 40;
-
 let data = {
   format: "instagram_feed",
   text: { mainText: "", auxText: "" },

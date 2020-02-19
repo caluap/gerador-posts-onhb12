@@ -2,6 +2,8 @@ let canvas;
 let mainFont, auxFont;
 let logo;
 
+let margin = 40;
+
 let spinner;
 
 let sizeConfig = {
