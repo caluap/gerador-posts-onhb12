@@ -35,13 +35,12 @@ function setup() {
 }
 
 function handleUpload(file) {
-  // if (file.type === "image") {
-  //   img = loadImage(file.data, () => {
-  //     originalImg = img.get();
-  //     img.filter(GRAY);
-  //     updateCanvas();
-  //   });
-  // }
+  if (file.type === "image") {
+    img = loadImage(file.data, () => {
+      originalImg = img.get();
+      updateCanvas();
+    });
+  }
 }
 
 function drawText() {
@@ -76,6 +75,21 @@ function drawLogo() {
 }
 
 function drawImages() {
+  let x = 56,
+    y = 59,
+    w = 362;
+
+  if (img) {
+    let minDim = Math.min(img.width, img.height);
+    let crop = img.get(
+      (img.width - minDim) / 2,
+      (img.height - minDim) / 2,
+      minDim,
+      minDim
+    );
+    image(crop, x, y, w, w);
+  }
+
   if (mask) {
     image(mask, 0, 0, width, height);
   }
