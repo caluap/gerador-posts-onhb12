@@ -161,6 +161,13 @@ $pad-tb: $u-h/4;
   cursor: grab;
 }
 
+input[type="text"] {
+  @extend .generic-text-field;
+  margin-top: $u-h/8;
+  width: 100%;
+  @include fs(-1);
+}
+
 textarea {
   @extend .generic-text-field;
   &.textarea-g {

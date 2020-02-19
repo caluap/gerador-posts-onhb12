@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerador de Posts ONHB12 / Depoimentos</title>
+    <script src="p5.js"></script>
+    <script src="common.js"></script>
+    <script src="sketch-depoimentos.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+  </head>
+  <body onresize="updateZoom()">
+    <div id="toolbar">
+      <div class="design">
+        <div class="tb-area">
+          <input id="chk-text" class="chk-but" type="checkbox" />
+          <label class="label-as-button" for="chk-text">
+            <img src="imgs/text-solid.svg" />
+          </label>
+          <div class="panel">
+            <h2>Caixas de texto</h2>
+            <div class="panel-container">
+              <div>
+                <h3>Depoimento</h3>
+                <textarea id="testimony" class="textarea-g"></textarea>
+                <div id="slider-fs-main-text">
+                  <h4>Tamanho</h4>
+                </div>
+              </div>
+
+              <div>
+                <label for="deponent"><h3>Nome do depoente</h3></label>
+                <input type="text" id="deponent" />
+              </div>
+              <div>
+                <label for="deponent-origin"><h3>Origem deponente</h3></label>
+                <input type="text" id="deponent-origin" />
+              </div>
+
+              <button onclick="updateTextVars()">Atualizar</button>
+            </div>
+          </div>
+        </div>
+        <div class="tb-area">
+          <input id="chk-image" class="chk-but" type="checkbox" />
+          <label class="label-as-button" for="chk-image">
+            <img src="imgs/image-solid.svg" />
+          </label>
+          <div class="panel">
+            <h2>Upload de imagem</h2>
+            <div class="panel-container">
+              <div id="img-upload">
+                <h3>Imagem</h3>
+              </div>
+              <div id="tint-percentage">
+                <h4>Matiz</h4>
+              </div>
+              <button onclick="removeImage()">Remover imagem</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="meta">
+        <button id="mt-download" onclick="saveImg()">
+          <img src="imgs/file-download-solid.svg" />
+        </button>
+      </div>
+    </div>
+    <article id="p5js-container"></article>
+
+    <script type="text/javascript">
+      let els = document.querySelectorAll(".chk-but");
+      els.forEach(e => {
+        e.addEventListener("change", function() {
+          let unselect = e.checked;
+          els.forEach(e => {
+            e.checked = false;
+          });
+          if (unselect) {
+            e.checked = true;
+          }
+        });
+      });
+
+      function updateTextVars() {
+        // data.text.mainText = document.getElementById("main-text").value;
+        // data.text.auxText = document.getElementById("aux-text").value;
+        updateCanvas();
+      }
+    </script>
+    <div id="spinner">
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+    </div>
+  </body>
+</html>
