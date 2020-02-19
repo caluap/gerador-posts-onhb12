@@ -61,11 +61,15 @@ function drawText() {
   text(dep, margin, 500, width - 500 - margin * 3, height - margin - 500);
 }
 
+function drawLogo() {
+  let s = Math.max(width * 0.1, 90);
+  let x = margin;
+  let y = height - margin - s;
+  image(logo, x, y, s, s);
+}
 function draw() {
   background(0);
-  // drawImage();
-  // drawPattern();
-  // drawLogo();
+  drawLogo();
   drawText();
   spinner.elt.style.opacity = "0";
 }
