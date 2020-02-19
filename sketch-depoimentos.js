@@ -1,3 +1,6 @@
+let mask = null,
+  img = null;
+
 let data = {
   format: "instagram_feed",
   text: { testimony: "", deponent: "", deponentOrigin: "" },
@@ -9,6 +12,10 @@ let sliderFsTestimony;
 function setup() {
   canvas = createCanvas(1080, 1080);
   canvas.parent("p5js-container");
+
+  mask = loadImage("./imgs/testimonials-mask.png", () => {
+    updateCanvas();
+  });
 
   spinner = select("#spinner");
   noLoop();
@@ -67,8 +74,16 @@ function drawLogo() {
   let y = height - margin - s;
   image(logo, x, y, s, s);
 }
+
+function drawImages() {
+  if (mask) {
+    image(mask, 0, 0, width, height);
+  }
+}
+
 function draw() {
   background(0);
+  drawImages();
   drawLogo();
   drawText();
   spinner.elt.style.opacity = "0";
