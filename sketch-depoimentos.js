@@ -1,6 +1,8 @@
 let mask = null,
   img = null;
 
+let xT = 540;
+
 let data = {
   format: "instagram_feed",
   text: { testimony: "", deponent: "", deponentOrigin: "" },
@@ -44,7 +46,7 @@ function handleUpload(file) {
 }
 
 function drawText() {
-  textFont(mainFont);
+  textFont(auxFont);
   textAlign(LEFT, TOP);
   fill(255);
 
@@ -54,17 +56,20 @@ function drawText() {
   textLeading((fsMainText * 4) / 3);
   text(
     data.text.testimony,
-    500,
+    xT,
     margin,
-    width - 500 - margin * 2,
+    width - xT - margin * 2,
     height - margin * 2
   );
 
-  textSize(32);
+  textFont(mainFont);
+  textAlign(CENTER, TOP);
+  textSize(38);
   textLeading(50);
 
-  let dep = `${data.text.deponent}, ${data.text.deponentOrigin}`;
-  text(dep, margin, 500, width - 500 - margin * 3, height - margin - 500);
+  let dep = `${data.text.deponent} \n${data.text.deponentOrigin}`;
+  let y = 450;
+  text(dep, margin, y, width - xT - margin * 3, height - margin - y);
 }
 
 function drawLogo() {
