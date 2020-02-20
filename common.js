@@ -1,5 +1,5 @@
 let canvas;
-let mainFont, auxFont;
+let mainFont, auxFont, auxFont2;
 let logo;
 
 let margin = 40;
@@ -16,6 +16,7 @@ let sizeConfig = {
 function preload() {
   mainFont = loadFont("./fonts/CooperHewitt-Semibold.otf");
   auxFont = loadFont("./fonts/CooperHewitt-Book.otf");
+  auxFont2 = loadFont("./fonts/CooperHewitt-MediumItalic.otf");
   logo = loadImage("./imgs/logo.png");
 }
 
