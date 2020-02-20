@@ -247,11 +247,22 @@ textarea {
   }
 }
 
-#toolbar .meta button {
-  @extend .big-but;
-  & + button {
-    margin-top: $pad-tb;
+#toolbar .meta {
+  * + * {
+    margin-top: $u-h/4;
   }
+  button {
+    @extend .big-but;
+    & + button {
+      margin-top: $pad-tb;
+    }
+  }
+}
+
+.page-link {
+  color: white;
+  @include fs(-3);
+  @include faux-caps;
 }
 
 #p5js-container {
