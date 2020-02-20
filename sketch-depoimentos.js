@@ -46,20 +46,27 @@ function handleUpload(file) {
 }
 
 function drawText() {
-  textFont(auxFont);
   textAlign(LEFT, TOP);
+  textFont(auxFont);
+  textSize(320);
+  // rgb(47, 218, 190);
+  fill(47, 218, 190);
+  text("“", xT - 120, margin + 10);
+  text("”", width - 140, height - margin - 90);
+
+  textFont(auxFont2);
   fill(255);
 
   let fsMainText = sliderFsTestimony.value();
 
-  let w1 = textSize(fsMainText);
+  textSize(fsMainText);
   textLeading((fsMainText * 4) / 3);
   text(
     data.text.testimony,
     xT,
-    margin,
+    margin * 2,
     width - xT - margin * 2,
-    height - margin * 2
+    height - margin * 4
   );
 
   textFont(mainFont);
