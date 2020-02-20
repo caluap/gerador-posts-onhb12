@@ -114,3 +114,11 @@ function draw() {
   drawText();
   spinner.elt.style.opacity = "0";
 }
+
+function removeImage() {
+  if (img) {
+    img = null;
+    originalImg = null;
+    updateCanvas();
+  }
+}
