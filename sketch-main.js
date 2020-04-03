@@ -3,6 +3,14 @@ let img = null;
 let originalImg = null;
 let loadedPatterns = {};
 
+let patternPath;
+
+if (typeof overriddenPath === "undefined") {
+  patternPath = "patterns-onhb-2012";
+} else {
+  patternPath = overriddenPath;
+}
+
 let sliderYMainText,
   sliderFsMainText,
   sliderYAuxText,
@@ -133,7 +141,7 @@ function drawPattern() {
       loadedPatterns[data.format] = {};
     }
     if (!(data.pattern in loadedPatterns[data.format])) {
-      let path = "./imgs/patterns/" + data.format + "/" + data.pattern + ".png";
+      let path = `./imgs/${patternPath}/${data.format}/${data.pattern}.png`;
       loadedPatterns[data.format][data.pattern] = loadImage(path, function() {
         console.log("has loaded the pattern");
         updateCanvas();
