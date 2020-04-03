@@ -248,10 +248,12 @@ textarea {
 }
 
 #toolbar .meta {
-  * + * {
-    margin-top: $u-h/4;
-  }
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: $u-h/4;
+
   button {
+    margin-top: $u-h / 4;
     @extend .big-but;
     & + button {
       margin-top: $pad-tb;
@@ -261,8 +263,12 @@ textarea {
 
 .page-link {
   color: white;
-  @include fs(-3);
+  display: block;
+  @include fs(-3, 1);
   @include faux-caps;
+  &.selected {
+    opacity: 0.5;
+  }
 }
 
 #p5js-container {
@@ -371,4 +377,12 @@ textarea {
   0% {
     transform: scale(1);
   }
+}
+
+#page-id {
+  position: fixed;
+  bottom: $pad-tb/2;
+  color: darkgray;
+  left: $pad-tb * 2 + $w-toolbar;
+  @include fs(2);
 }
