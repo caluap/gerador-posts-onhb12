@@ -4,11 +4,17 @@ let originalImg = null;
 let loadedPatterns = {};
 
 let patternPath;
+let tintPattern;
 
 if (typeof overriddenPath === "undefined") {
   patternPath = "patterns-onhb-2012";
 } else {
   patternPath = overriddenPath;
+}
+if (typeof overrideTint === "undefined") {
+  tintPattern = true;
+} else {
+  tintPattern = false;
 }
 
 let sliderYMainText,
@@ -147,10 +153,12 @@ function drawPattern() {
         updateCanvas();
       });
     } else {
-      if (img) {
-        tint("#ff008f");
-      } else {
-        tint("#cb0072");
+      if (tintPattern) {
+        if (img) {
+          tint("#ff008f");
+        } else {
+          tint("#cb0072");
+        }
       }
       image(loadedPatterns[data.format][data.pattern], 0, 0, width, height);
       noTint();
