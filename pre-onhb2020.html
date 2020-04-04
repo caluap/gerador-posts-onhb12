@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerador de Posts ONHB12</title>
+    <script src="p5.js"></script>
+    <script src="common.js"></script>
+    <script type="text/javascript">
+      let overriddenPath = "patterns-preonhb-2020";
+      let overrideTint = true;
+    </script>
+    <script src="sketch-main.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+  </head>
+  <body onresize="updateZoom()">
+    <p id="page-id">Pré-ONHB 2020</p>
+    <div id="toolbar">
+      <div class="design">
+        <div class="tb-area">
+          <input id="chk-format" class="chk-but" type="checkbox" />
+          <label class="label-as-button" for="chk-format">
+            <img src="imgs/ruler-triangle-solid.svg" />
+          </label>
+          <div class="panel">
+            <h2>
+              Seleção de formato
+            </h2>
+            <div class="panel-container">
+              <input
+                type="radio"
+                id="rd_instagram_feed"
+                name="social-network-format"
+                value="instagram_feed"
+                checked
+              /><label for="rd_instagram_feed"
+                ><img src="imgs/instagram-brands.svg" /><span>Feed</span></label
+              >
+              <input
+                type="radio"
+                id="rd_instagram_stories"
+                name="social-network-format"
+                value="instagram_stories"
+              /><label for="rd_instagram_stories"
+                ><img src="imgs/instagram-brands.svg" /><span
+                  >Stories</span
+                ></label
+              >
+              <input
+                type="radio"
+                id="rd_twitter"
+                name="social-network-format"
+                value="twitter_feed"
+              /><label for="rd_twitter"
+                ><img src="imgs/twitter-brands.svg" /><span>Feed</span></label
+              >
+              <input
+                type="radio"
+                id="rd_facebook"
+                name="social-network-format"
+                value="facebook_feed"
+              /><label for="rd_facebook"
+                ><img src="imgs/facebook-brands.svg" /><span>Feed</span></label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="tb-area">
+          <input id="chk-text" class="chk-but" type="checkbox" />
+          <label class="label-as-button" for="chk-text">
+            <img src="imgs/text-solid.svg" />
+          </label>
+          <div class="panel">
+            <h2>Caixas de texto</h2>
+            <div class="panel-container">
+              <div>
+                <h3>Texto principal</h3>
+                <textarea id="main-text" class="textarea-g"></textarea>
+                <div id="slider-y-main-text">
+                  <h4>Posição</h4>
+                </div>
+                <div id="slider-fs-main-text">
+                  <h4>Tamanho</h4>
+                </div>
+              </div>
+
+              <div>
+                <h3>Texto secundário</h3>
+                <textarea id="aux-text" class="textarea-p"></textarea>
+                <div id="slider-y-aux-text">
+                  <h4>Posição</h4>
+                </div>
+                <div id="slider-fs-aux-text">
+                  <h4>Tamanho</h4>
+                </div>
+              </div>
+
+              <button onclick="updateTextVars()">Atualizar</button>
+            </div>
+          </div>
+        </div>
+        <div class="tb-area">
+          <input id="chk-image" class="chk-but" type="checkbox" />
+          <label class="label-as-button" for="chk-image">
+            <img src="imgs/image-solid.svg" />
+          </label>
+          <div class="panel">
+            <h2>Upload de imagem</h2>
+            <div class="panel-container">
+              <div id="img-upload">
+                <h3>Imagem</h3>
+              </div>
+              <div id="tint-percentage">
+                <h4>Matiz</h4>
+              </div>
+              <button onclick="removeImage()">Remover imagem</button>
+            </div>
+          </div>
+        </div>
+        <div class="tb-area">
+          <input id="chk-overlay" class="chk-but" type="checkbox" />
+          <label class="label-as-button" for="chk-overlay">
+            <img src="imgs/sparkles-solid.svg" />
+          </label>
+          <div class="panel" id="c-pattern-selection">
+            <h2>Tematização ONHB12</h2>
+            <div class="panel-container">
+              <input
+                type="radio"
+                id="rd_pattern_00"
+                name="pattern-selection"
+                value="0"
+                checked
+              /><label for="rd_pattern_00"
+                ><img src="imgs/pattern-icons/ico00.svg" /><span
+                  >Sem padrão</span
+                ></label
+              >
+              <input
+                type="radio"
+                id="rd_pattern_01"
+                name="pattern-selection"
+                value="1"
+              /><label for="rd_pattern_01"
+                ><img src="imgs/pattern-icons/ico01.svg" /><span
+                  >Círculo</span
+                ></label
+              >
+              <input
+                type="radio"
+                id="rd_pattern_02"
+                name="pattern-selection"
+                value="2"
+              /><label for="rd_pattern_02"
+                ><img src="imgs/pattern-icons/ico02.svg" /><span
+                  >Borda</span
+                ></label
+              >
+              <input
+                type="radio"
+                id="rd_pattern_03"
+                name="pattern-selection"
+                value="3"
+              /><label for="rd_pattern_03"
+                ><img src="imgs/pattern-icons/ico03.svg" /><span
+                  >Pleno</span
+                ></label
+              >
+              <input
+                type="radio"
+                id="rd_pattern_04"
+                name="pattern-selection"
+                value="4"
+              /><label for="rd_pattern_04"
+                ><img src="imgs/pattern-icons/ico04.svg" /><span
+                  >1/3</span
+                ></label
+              >
+              <input
+                type="radio"
+                id="rd_pattern_05"
+                name="pattern-selection"
+                value="5"
+              /><label for="rd_pattern_05"
+                ><img src="imgs/pattern-icons/ico05.svg" /><span
+                  >2/3</span
+                ></label
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="meta">
+        <a class="page-link" href="/">
+          ONHB12
+        </a>
+        <a class="page-link selected">
+          Pré-2020
+        </a>
+        <a class="page-link" href="depoimentos.html">
+          Depoim.
+        </a>
+        <button id="mt-download" onclick="saveImg()">
+          <img src="imgs/file-download-solid.svg" />
+        </button>
+      </div>
+    </div>
+    <article id="p5js-container"></article>
+
+    <script type="text/javascript">
+      let els = document.querySelectorAll(".chk-but");
+      els.forEach(e => {
+        e.addEventListener("change", function() {
+          let unselect = e.checked;
+          els.forEach(e => {
+            e.checked = false;
+          });
+          if (unselect) {
+            e.checked = true;
+          }
+        });
+      });
+
+      let formatEls = document.querySelectorAll(
+        'input[name="social-network-format"'
+      );
+      formatEls.forEach(e => {
+        e.addEventListener("change", updateFormat);
+      });
+
+      let patternEls = document.querySelectorAll(
+        'input[name="pattern-selection"]'
+      );
+      patternEls.forEach(e => {
+        e.addEventListener("change", updatePattern);
+      });
+
+      function updateFormat() {
+        let newFormat = document.querySelector(
+          'input[name="social-network-format"]:checked'
+        ).value;
+        data.format = newFormat;
+        updateZoom();
+        setSizeFormat();
+      }
+
+      function updatePattern() {
+        let newPattern = document.querySelector(
+          'input[name="pattern-selection"]:checked'
+        ).value;
+        data.pattern = newPattern;
+        updateCanvas();
+      }
+
+      function updateTextVars() {
+        data.text.mainText = document.getElementById("main-text").value;
+        data.text.auxText = document.getElementById("aux-text").value;
+
+        updateCanvas();
+      }
+    </script>
+    <div id="spinner">
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+    </div>
+  </body>
+</html>
