@@ -5,6 +5,7 @@ let loadedPatterns = {};
 
 let patternPath;
 let tintPattern;
+let canvasBg;
 
 if (typeof overriddenPath === "undefined") {
   patternPath = "patterns-onhb-2012";
@@ -15,6 +16,11 @@ if (typeof overrideTint === "undefined") {
   tintPattern = true;
 } else {
   tintPattern = false;
+}
+if (typeof overrideBg === "undefined") {
+  canvasBg = "#000000";
+} else {
+  canvasBg = overrideBg;
 }
 
 let sliderYMainText,
@@ -81,7 +87,7 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+  background(canvasBg);
   drawImage();
   drawPattern();
   drawLogo();
