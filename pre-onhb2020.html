@@ -24,9 +24,7 @@
             <img src="imgs/ruler-triangle-solid.svg" />
           </label>
           <div class="panel">
-            <h2>
-              Seleção de formato
-            </h2>
+            <h2>Seleção de formato</h2>
             <div class="panel-container">
               <input
                 type="radio"
@@ -192,15 +190,10 @@
         </div>
       </div>
       <div class="meta">
-        <a class="page-link" href="/">
-          ONHB12
-        </a>
-        <a class="page-link selected">
-          Pré-2020
-        </a>
-        <a class="page-link" href="depoimentos.html">
-          Depoim.
-        </a>
+        <a class="page-link" href="/"> ONHB12 </a>
+        <a class="page-link" href="/neutro.html"> Neutro </a>
+        <a class="page-link selected"> Pré-2020 </a>
+        <a class="page-link" href="depoimentos.html"> Depoim. </a>
         <button id="mt-download" onclick="saveImg()">
           <img src="imgs/file-download-solid.svg" />
         </button>
@@ -210,10 +203,10 @@
 
     <script type="text/javascript">
       let els = document.querySelectorAll(".chk-but");
-      els.forEach(e => {
-        e.addEventListener("change", function() {
+      els.forEach((e) => {
+        e.addEventListener("change", function () {
           let unselect = e.checked;
-          els.forEach(e => {
+          els.forEach((e) => {
             e.checked = false;
           });
           if (unselect) {
@@ -225,14 +218,14 @@
       let formatEls = document.querySelectorAll(
         'input[name="social-network-format"'
       );
-      formatEls.forEach(e => {
+      formatEls.forEach((e) => {
         e.addEventListener("change", updateFormat);
       });
 
       let patternEls = document.querySelectorAll(
         'input[name="pattern-selection"]'
       );
-      patternEls.forEach(e => {
+      patternEls.forEach((e) => {
         e.addEventListener("change", updatePattern);
       });
 

@@ -59,15 +59,10 @@
         </div>
       </div>
       <div class="meta">
-        <a class="page-link" href="/">
-          ONHB12
-        </a>
-        <a class="page-link" href="/pre-onhb2020.html">
-          Pré-2020
-        </a>
-        <a class="page-link selected">
-          Depoim.
-        </a>
+        <a class="page-link" href="/"> ONHB12 </a>
+        <a class="page-link" href="/neutro.html"> Neutro </a>
+        <a class="page-link" href="/pre-onhb2020.html"> Pré-2020 </a>
+        <a class="page-link selected"> Depoim. </a>
         <button id="mt-download" onclick="saveImg()">
           <img src="imgs/file-download-solid.svg" />
         </button>
@@ -77,10 +72,10 @@
 
     <script type="text/javascript">
       let els = document.querySelectorAll(".chk-but");
-      els.forEach(e => {
-        e.addEventListener("change", function() {
+      els.forEach((e) => {
+        e.addEventListener("change", function () {
           let unselect = e.checked;
-          els.forEach(e => {
+          els.forEach((e) => {
             e.checked = false;
           });
           if (unselect) {
